@@ -1,25 +1,5 @@
-import datetime
-
-class Building:
-
-    def __init__(self, address, stories):
-        self.designer = "Katie Wohl"
-        self.date_constructed = ""
-        self.owner = ""
-        self.address = address
-        self.stories = stories
-        self.name = ""
-
-    def construct(self):
-        self.date_constructed = datetime.datetime.now()
-
-    def purchase(self, name):
-        self.owner = name
-
-    def building_summary(self):
-        print(f"{self.name} was purchased by {self.owner} on {self.date_constructed.strftime('%B %d, %Y')} and has {self.stories} stories.")
-
-
+from building import Building
+from city import City
 
 eight_hundred_eighth = Building("800 8th Street", 12)
 cherry_blossom = Building("Grandma's House", 3)
@@ -52,3 +32,17 @@ nss.construct()
 nss.name = "NSS"
 nss.building_summary()
 
+print()
+
+megalopolis = City("Megalopolis", 1995)
+megalopolis.construct_building(eight_hundred_eighth)
+megalopolis.construct_building(cherry_blossom)
+megalopolis.construct_building(stillwater)
+megalopolis.construct_building(springHill)
+megalopolis.construct_building(nss)
+
+print()
+
+for building in megalopolis.buildings:
+    print(f"{building.name} is a building in the city of {megalopolis.name}! It is located at {building.address} and was designed by {building.designer}. It is currently owned by {building.owner}")
+    print()
